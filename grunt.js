@@ -1,5 +1,7 @@
 /*global module:false*/
 module.exports = function(grunt) {
+  
+  grunt.loadNpmTasks('grunt-css');
 
   // Project configuration.
   grunt.initConfig({
@@ -24,9 +26,15 @@ module.exports = function(grunt) {
       }
     },
     min: {
-      dist: {
-        src: ['css/main.css', 'js/main.js']
-        dest: 'dist/FILE_NAME.min.js'
+      js: {
+        src: 'js/main.js',
+        dest: 'js/main.min.js'
+      }
+    },
+    cssmin: {
+      css: {
+        src: 'css/main.css',
+        dest: 'css/main.min.css'
       }
     },
     watch: {
@@ -53,6 +61,6 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', 'lint qunit concat min');
+  grunt.registerTask('default', 'concat min cssmin');
 
 };
